@@ -74,3 +74,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local tools, credentials, caches and verification outputs
+/.tools/
+/.cache/
+/.local/
+/.qa/
+/logs/

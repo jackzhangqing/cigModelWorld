@@ -1,3 +1,5 @@
+import { SITE } from '@/data/site-config';
+
 /**
  * 多语言。首版只有中文，英文放第二期。
  *
@@ -187,13 +189,13 @@ export interface Dict {
  *    「记性」比「上下文窗口」对外行更好懂，这类留着。
  */
 const zh: Dict = {
-  siteName: '大模型世界',
-  siteTagline: '一眼看懂大模型的当下格局',
+  siteName: SITE.name,
+  siteTagline: '模型、评测与价格，一站看清',
   siteDescription:
-    '把每个大模型画成一个像素角色，用能力条和排行榜把「谁最聪明、谁最会编程、谁最便宜」摆在明面上。数据来自第三方公开评测，每 12 小时自动同步。',
+    '以模型品牌图标展示 AI 模型，集中查看公开评测、价格、上下文与发布时间。数据来自公开来源，每天自动同步两次。',
 
   nav: {
-    plaza: '广场',
+    plaza: '模型总览',
     chronicle: '时间线',
     leaderboard: '排行榜',
     compare: '对比',
@@ -258,7 +260,7 @@ const zh: Dict = {
   },
 
   unknown: {
-    sizeEstimated: '体型为估算值，官方从未公布参数量',
+    sizeEstimated: '官方未公布参数量',
     sizeApprox: '参数量由型号名推断，非官方权重实测',
     notRanked: '未参评',
     noData: '暂无数据',
@@ -268,7 +270,7 @@ const zh: Dict = {
   },
 
   status: {
-    newborn: '刚出生',
+    newborn: '新发布',
     retired: '已退役',
     ageDays: (days) => `${days} 天前发布`,
     ageYears: (years) => `发布 ${years} 年`,
@@ -295,8 +297,8 @@ const zh: Dict = {
     },
     newer: (name) => `本家更新：${name}`,
     newerHint: (name, date) =>
-      `${name} 发布于 ${date}，比屋里这位更新。\n` +
-      '屋里站的是这家当下实力第一的一位，而新型号往往还没拿到第三方评测成绩，\n' +
+      `${name} 发布于 ${date}，比当前展示型号更新。\n` +
+      '当前展示的是这家厂商的代表型号，而新型号往往还没拿到第三方评测成绩，\n' +
       '所以不会仅因为「更新」就换人。点这行可以直接去看它。',
   },
 
@@ -306,7 +308,7 @@ const zh: Dict = {
     code: '最会编程',
     value: '最划算',
     cheap: '最便宜',
-    memory: '记性最好',
+    memory: '上下文最长',
     newest: '最新发布',
     east: '国内第一',
     open: '开源第一',
@@ -319,9 +321,9 @@ const zh: Dict = {
 
   footer: {
     dataFrom: '数据来自',
-    artFrom: '字体',
-    credits: '素材署名',
-    author: '作者',
+    artFrom: '图标与字体',
+    credits: '来源与致谢',
+    author: '维护',
     alsoVisit: '也看看',
     sourceCode: '源码开源',
     sourceCodeHint: '本站代码、数据管线与抓取脚本全部开源（MIT），在 GitHub 上',

@@ -31,13 +31,14 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  TOY_ID: '34090174887936'
+  TOY_ID: ${{ vars.TOY_ID }}
   # 固定版本，升级 CLI 时改这里（最新版本号：https://boss.hdslb.com/toy-cli/toy/latest/VERSION）
   TOY_CLI_VERSION: v0.6.1
   TOY_NO_UPDATE_CHECK: '1'
 
 jobs:
   publish:
+    if: ${{ vars.TOY_PUBLISH_ENABLED == 'true' && vars.TOY_ID != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -71,7 +72,7 @@ jobs:
 
       - name: 打包
         if: steps.decide.outputs.publish == 'true'
-        run: npm run assets && npm run toy:build
+        run: npm run toy:build
 
       # 发版闸门：把包挂到与线上同构的版本化路径下，用真实浏览器把每个控件点一遍
       - name: 自检

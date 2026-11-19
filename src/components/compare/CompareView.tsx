@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { AbilityBars } from '@/components/character/AbilityBars';
-import { VendorCrest } from '@/components/character/VendorCrest';
+import { ModelLogo } from '@/components/character/ModelLogo';
 import { useUrlQuery } from '@/components/leaderboard/useUrlQuery';
 import { APTITUDES, type AptitudeRow } from '@/lib/aptitude';
 import { getDict, DEFAULT_LANG } from '@/lib/i18n';
@@ -103,31 +103,10 @@ const SPECS: SpecDef[] = [
 
 // ─── 小部件 ──────────────────────────────────────────────────────
 
-function Sprite({ m, base, accent }: { m: CmpModel; base: string; accent: string }) {
-  const box = 96;
-  const cell = Math.round(box * m.scale);
+function ModelMark({ m, basePath }: { m: CmpModel; basePath: string }) {
   return (
-    <div className="relative flex items-end justify-center" style={{ width: box, height: box }} aria-hidden>
-      <div
-        className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded-[50%]"
-        style={{ width: cell * 0.42, height: 7, background: 'rgb(0 0 0 / 0.32)', filter: 'blur(1px)' }}
-      />
-      {m.sprite ? (
-        <div
-          className="relative"
-          style={{
-            width: cell,
-            height: cell,
-            backgroundImage: `url(${base}${m.slug}.png)`,
-            backgroundSize: `${cell * 9}px auto`,
-            backgroundRepeat: 'no-repeat',
-            imageRendering: 'pixelated',
-            opacity: m.retired ? 0.5 : 1,
-          }}
-        />
-      ) : (
-        <div className="relative mb-1" style={{ width: cell * 0.36, height: cell * 0.78, background: accent }} />
-      )}
+    <div className="flex h-24 w-24 items-center justify-center" style={{ opacity: m.retired ? 0.5 : 1 }}>
+      <ModelLogo vendorId={m.vendor} modelName={m.name} size={72} basePath={basePath} />
     </div>
   );
 }
@@ -374,7 +353,7 @@ function ScoresBlock({
 
 // ─── 主组件 ──────────────────────────────────────────────────────
 
-export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBase: string }) {
+export function CompareView({ dataUrl, logoBase }: { dataUrl: string; logoBase: string }) {
   const [params, update] = useUrlQuery();
   const [data, setData] = useState<CompareData | null>(null);
   const [failed, setFailed] = useState(false);
@@ -489,7 +468,7 @@ export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBa
                   >
                     ×
                   </button>
-                  <Sprite m={m} base={spriteBase} accent={accents[i]} />
+                  <ModelMark m={m} basePath={logoBase} />
                   <Link
                     href={`/model/${m.slug}/`}
                     className="pixel-outline mt-1 text-[17px] leading-snug hover:text-[var(--color-gold)] sm:text-[20px]"
@@ -499,7 +478,7 @@ export function CompareView({ dataUrl, spriteBase }: { dataUrl: string; spriteBa
                   <div className="mt-1.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[13px]">
                     {v && (
                       <span className="flex items-center gap-1" style={{ color: v.accent }}>
-                        <VendorCrest motif={v.motif} accentColor={v.accent} size={14} />
+                        <ModelLogo vendorId={m.vendor} size={14} basePath={logoBase} />
                         {v.name}
                       </span>
                     )}

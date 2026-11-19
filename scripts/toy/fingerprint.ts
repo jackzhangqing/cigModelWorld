@@ -39,6 +39,8 @@ const CODE_PATHS = [
   'next.config.ts',
   'postcss.config.mjs',
   'package-lock.json',
+  'package.json',
+  'scripts/build-site.mjs',
 ];
 
 function strip(value: unknown): unknown {

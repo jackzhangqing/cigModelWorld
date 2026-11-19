@@ -45,7 +45,7 @@ function Bar({
         width={total}
         height={h}
         shapeRendering="crispEdges"
-        className="shrink-0"
+        className={compact ? 'min-w-0 shrink' : 'shrink-0'}
         aria-hidden
       >
         <path d={cells(0, SEGMENTS)} fill="none" stroke="rgb(255 255 255 / 0.16)" strokeWidth={1} />
@@ -63,7 +63,7 @@ function Bar({
       width={total}
       height={h}
       shapeRendering="crispEdges"
-      className="shrink-0"
+      className={compact ? 'min-w-0 shrink' : 'shrink-0'}
       aria-hidden
     >
       <path d={cells(0, lit)} fill={color} />
@@ -89,7 +89,7 @@ export function AbilityBars({ row, compact = false, highlight = null }: AbilityB
         return (
           <div
             key={apt.id}
-            className="flex items-center gap-1.5"
+            className="flex min-w-0 items-center gap-1.5"
             style={{
               // 高亮不用边框，边框会让这一行变高、把整排卡片的基线顶歪
               background: on ? 'rgb(255 255 255 / 0.07)' : undefined,

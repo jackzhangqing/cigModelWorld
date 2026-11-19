@@ -5,7 +5,6 @@ import { SiteNav } from '@/components/world/SiteNav';
 import { DEFAULT_LANG, getDict } from '@/lib/i18n';
 import { isSampleData, loadSnapshot } from '@/lib/snapshot';
 import { buildPlazaRoster } from '@/lib/roster';
-import { listSpriteSlugs, spriteOverlaysBaked } from '@/lib/sprites-available';
 import { canonicalVendorId, VENDOR_REGISTRY } from '@/data/vendor-registry';
 import { attributionFor, loadAttribution } from '@/lib/attribution';
 import { buildChampions } from '@/lib/champions';
@@ -20,7 +19,6 @@ export default function Page() {
   const now = new Date(snapshot.generatedAt);
   const registryHas = (id: string) => canonicalVendorId(id) in VENDOR_REGISTRY;
   const rosters = buildPlazaRoster(snapshot.models, snapshot.vendors, now, registryHas);
-  const spriteSlugs = listSpriteSlugs();
   const champions = buildChampions(snapshot.models, snapshot.vendors, now, registryHas);
   const kindGroups = buildKindGroups(snapshot.models, now, registryHas);
 
@@ -105,7 +103,7 @@ export default function Page() {
 
           {/* 首屏先给结论：今日格局。它取代了早先那条教用户读图的图例。 */}
           <div className="mb-6">
-            <ChampionRow champions={champions} lang={DEFAULT_LANG} spriteSlugs={spriteSlugs} />
+            <ChampionRow champions={champions} lang={DEFAULT_LANG} />
           </div>
 
           {/*
@@ -114,7 +112,7 @@ export default function Page() {
             在这里才看得见；也是从首页按类型钻进总表的入口。
           */}
           <div className="mb-6">
-            <KindRow groups={kindGroups} lang={DEFAULT_LANG} spriteSlugs={spriteSlugs} />
+            <KindRow groups={kindGroups} lang={DEFAULT_LANG} />
           </div>
 
           <Plaza
@@ -122,10 +120,9 @@ export default function Page() {
             allModels={snapshot.models}
             vendors={snapshot.vendors}
             lang={DEFAULT_LANG}
-            spriteSlugs={spriteSlugs}
+           
             now={now}
             proIsThirdParty={proIsThirdParty}
-            overlaysNeeded={!spriteOverlaysBaked()}
           />
         </div>
       </div>

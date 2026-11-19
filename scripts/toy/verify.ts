@@ -31,7 +31,7 @@ const PKG = join(ROOT, '.toy-pkg');
  * 这一整类问题，正是它让 2026-09-17 那版整站失去交互。这里用一个假的版本号目录，
  * 只要包对挂载路径没有任何假设，它就能过。
  */
-const SLUG = (process.env.NEXT_BASE_PATH ?? '/toy/ai-model-world').replace(/^\/+|\/+$/g, '');
+const SLUG = (process.env.NEXT_BASE_PATH ?? '/toy/cig-model-world').replace(/^\/+|\/+$/g, '');
 const MOUNT = `${SLUG}/34090174887936-v15484`;
 const PORT = 4561;
 const BASE = `http://127.0.0.1:${PORT}/${MOUNT}`;
@@ -273,10 +273,10 @@ async function main() {
   console.log('\n— 模型对比 —');
   const cmp = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   let dataOk = false;
-  const badSprites: string[] = [];
+  const badLogos: string[] = [];
   cmp.on('response', (r) => {
     if (r.url().includes('compare-data.json') && r.status() === 200) dataOk = true;
-    if (r.url().includes('/sprites/') && r.status() >= 400) badSprites.push(r.url());
+    if (r.url().includes('/model-logos/') && r.status() >= 400) badLogos.push(r.url());
   });
   await cmp.goto(`${BASE}/model/deepseek-deepseek-v4-1-flash/index.html`, { waitUntil: 'networkidle' });
   await cmp.waitForTimeout(1200);
@@ -292,7 +292,8 @@ async function main() {
   check(cards >= 2 && cmp.url().includes(','), '对比页能添加第二个模型', `${cards} 张卡 · ${cmp.url().replace(BASE, '')}`);
   const rows = await cmp.getByText('评测跑分').count();
   check(rows > 0, '对比页渲染出跑分区');
-  check(badSprites.length === 0, '对比页精灵图可加载', badSprites.slice(0, 2).join(' | '));
+  const loadedLogos = await cmp.locator('img[src*="model-logos/"]').evaluateAll((images) => images.filter((image) => image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0).length);
+  check(badLogos.length === 0 && loadedLogos >= 2, '对比页模型图标可加载', `${loadedLogos} 个已加载图标 ${badLogos.slice(0, 2).join(' | ')}`);
   await cmp.locator('a[href*="model/"]').filter({ hasText: /DeepSeek/ }).first().click();
   await cmp.waitForTimeout(1800);
   const back = await cmp.evaluate(() => document.body.innerText.length > 400 && !document.body.innerText.includes('not found'));

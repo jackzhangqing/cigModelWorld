@@ -147,8 +147,10 @@
     letter-spacing: 0.02em;
   }
 
-  /* 精灵图与一切像素素材禁止插值缩放 */
-  img,
+  /* Smooth brand SVGs and video covers; only the legacy canvas is pixel art. */
+  img {
+    image-rendering: auto;
+  }
   canvas {
     image-rendering: pixelated;
   }

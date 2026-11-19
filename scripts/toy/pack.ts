@@ -64,14 +64,14 @@
  *   toy update <id> .toy-pkg --yes
  */
 import { cpSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { contentFingerprint, RELEASE_FILE } from './fingerprint.ts';
 
 const ROOT = join(import.meta.dirname, '..', '..');
 const SRC = join(ROOT, process.env.NEXT_DIST_DIR ?? '.next-toy');
 const OUT = join(ROOT, '.toy-pkg');
 /** 与构建时的 NEXT_BASE_PATH 一致。产物里出现的这个前缀全部要剥掉 */
-const BASE = `${process.env.NEXT_BASE_PATH ?? '/toy/ai-model-world'}/`;
+const BASE = `${process.env.NEXT_BASE_PATH ?? '/toy/cig-model-world'}/`;
 
 /**
  * 目录形式的站内链接补 index.html。剥完前缀之后它们长这样：
@@ -172,7 +172,7 @@ function main(): void {
 
   for (const f of files) {
     if (f.endsWith('.txt')) continue;
-    const rel = f.slice(OUT.length + 1);
+    const rel = relative(OUT, f).split(sep).join('/');
     const depth = rel.split('/').length - 1;
     let text: string;
     try {

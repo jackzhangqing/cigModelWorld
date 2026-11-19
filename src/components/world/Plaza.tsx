@@ -47,31 +47,13 @@ const CONTINENT_STYLE: Record<Continent, { accent: string; ground: string }> = {
   },
 };
 
-/** 路牌：像素木牌，钉在每条街的街口 */
+/** Section label for the unchanged vendor-strength tiers. */
 function Signpost({ tier, count, lang }: { tier: PlazaTier; count: number; lang: Lang }) {
   const dict = getDict(lang);
-  const gold = tier === 'top';
   return (
     <div className="mb-3 flex flex-wrap items-center gap-2" title={dict.plaza.tierHint[tier]}>
-      <div
-        className="relative border-2 border-[var(--color-ink)] px-2.5 py-0.5 text-[13px] font-semibold leading-tight"
-        style={{
-          background: gold ? 'var(--color-gold)' : '#7d6238',
-          color: gold ? 'var(--color-ink)' : 'var(--color-parchment-lit)',
-          boxShadow:
-            'inset -2px -2px 0 rgb(0 0 0 / 0.3), inset 2px 2px 0 rgb(255 255 255 / 0.25), 2px 2px 0 rgb(0 0 0 / 0.4)',
-        }}
-      >
-        {dict.plaza.tier[tier]}
-        {/* 木牌下面的钉桩 */}
-        <span
-          className="absolute -bottom-2 left-1/2 h-2 w-1 -translate-x-1/2 bg-[#5b4426]"
-          aria-hidden
-        />
-      </div>
-      <span className="text-[12px] text-[var(--color-ghost)]">
-        {dict.plaza.vendorCount(count)} · {dict.plaza.tierHint[tier]}
-      </span>
+      <span className="rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-[13px] font-semibold text-[var(--color-parchment)]">{dict.plaza.tier[tier]}</span>
+      <span className="text-[12px] text-[var(--color-ghost)]">{dict.plaza.vendorCount(count)} · {dict.plaza.tierHint[tier]}</span>
     </div>
   );
 }
@@ -91,10 +73,9 @@ function NewerNote({ model, lang }: { model: ModelRecord; lang: Lang }) {
     <Link
       href={`/model/${model.slug}/`}
       title={dict.plaza.newerHint(model.name, model.releaseDate ?? '未知日期')}
-      className="mt-1 flex items-center gap-1 border-2 border-t-0 border-[var(--color-ink)] px-2 py-1 text-[12px] leading-tight text-[var(--color-parchment-dim)] transition-colors hover:text-[var(--color-gold)]"
+      className="mt-1 flex items-center gap-1 rounded-md border border-white/10 px-2 py-1.5 text-[12px] leading-tight text-[var(--color-parchment-dim)] transition-colors hover:text-[var(--color-gold)]"
       style={{ background: 'rgb(255 255 255 / 0.04)' }}
     >
-      <span className="shrink-0 text-[var(--color-gold)]">▲</span>
       <span className="truncate">{dict.plaza.newer(model.name)}</span>
     </Link>
   );
@@ -106,12 +87,9 @@ interface PlazaProps {
   /** 人设里的「国内厂商里」「国外厂商里」这类限定域要按厂商归属判定 */
   vendors: Vendor[];
   lang: Lang;
-  spriteSlugs: ReadonlySet<string>;
   now: Date;
   /** SWE-Bench Pro 的成绩是不是第三方测的。两类来源中位数差 18 分，必须分开分档。 */
   proIsThirdParty: (modelId: string) => boolean;
-  /** 精灵图未烘焙皇冠、光环等状态层，需要前端补画 */
-  overlaysNeeded: boolean;
 }
 
 export function Plaza({
@@ -119,10 +97,8 @@ export function Plaza({
   allModels,
   vendors,
   lang,
-  spriteSlugs,
   now,
   proIsThirdParty,
-  overlaysNeeded,
 }: PlazaProps) {
   const dict = getDict(lang);
   const ranks = rankByEci(allModels);
@@ -151,19 +127,15 @@ export function Plaza({
     else byVendor.set(m.vendorId, [m]);
   }
 
-  const renderRoom = (continent: Continent, entry: RosterEntry) => {
+  const renderCard = (entry: RosterEntry) => {
     const newer = newerThanFlagship(entry.model, byVendor.get(entry.model.vendorId) ?? []);
     return (
-      <div key={entry.model.id}>
+      <div key={entry.model.id} className="flex min-w-0 flex-col self-start">
         <ModelRoom
           model={entry.model}
           visual={visualOf(entry.model, ranks.get(entry.model.id) ?? null, now, scales)}
-          continent={continent}
           lang={lang}
-          hasSprite={spriteSlugs.has(entry.model.slug)}
           traits={traitMap.get(entry.model.id) ?? []}
-          scales={scales}
-          overlaysNeeded={overlaysNeeded}
           aptitude={aptitude.rowOf(entry.model)}
           persona={personaFor(entry.model, personaCtx)}
           pruning={pruning}
@@ -209,8 +181,8 @@ export function Plaza({
           {streets.map((street, i) => (
             <div key={street.tier} className={i > 0 ? 'mt-7 border-t border-white/10 pt-5' : ''}>
               <Signpost tier={street.tier} count={street.entries.length} lang={lang} />
-              <div className="flex flex-wrap justify-center gap-x-2 gap-y-5 sm:justify-start sm:gap-x-3 sm:gap-y-6">
-                {street.entries.map((e) => renderRoom(continent, e))}
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                {street.entries.map((e) => renderCard(e))}
               </div>
             </div>
           ))}
@@ -221,8 +193,8 @@ export function Plaza({
               <summary className="cursor-pointer list-none text-[13px] text-[var(--color-ghost)] hover:text-[var(--color-parchment)]">
                 ▸ {dict.plaza.moreVendors(roster.others.length)}
               </summary>
-              <div className="mt-4 flex flex-wrap justify-center gap-x-2 gap-y-5 sm:justify-start sm:gap-x-3 sm:gap-y-6">
-                {roster.others.map((e) => renderRoom(continent, e))}
+              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                {roster.others.map((e) => renderCard(e))}
               </div>
             </details>
           )}

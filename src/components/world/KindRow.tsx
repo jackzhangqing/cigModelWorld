@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import type { KindGroup } from '@/lib/kind';
-import { profileFor } from '@/data/vendor-registry';
-import { readableOnDark } from '@/lib/color';
 import { getDict, type Lang } from '@/lib/i18n';
 import { SectionFrame } from '@/components/world/SectionFrame';
-import { asset } from '@/lib/asset';
+import { ModelLogo } from '@/components/character/ModelLogo';
 
 /**
  * 首页「按类型看」：六张类型卡，一张一类，点开就是总表里这一类的全部模型。
@@ -15,51 +13,18 @@ import { asset } from '@/lib/asset';
  * 给广场加一个点了没东西的筛选按钮，比不加更糟。
  * 这一排卡片是这三类模型在首页唯一的露脸机会，也是按类型钻进总表的入口。
  *
- * 卡片上放什么：类型名、这一类有多少个、三个代表模型的小人。
+ * 卡片上放什么：类型名、这一类有多少个、三个代表模型的品牌图标。
  * 判定依据只放在悬停提示里，标题下不写任何解释。
  */
 
-const SHEET_COLUMNS = 9;
-const FIGURE = 48;
 const ACCENT = 'var(--color-dawn)';
-
-function Figure({ slug, accent, hasSprite, title }: { slug: string; accent: string; hasSprite: boolean; title: string }) {
-  if (!hasSprite) {
-    return (
-      <div
-        className="anim-idle"
-        style={{ width: FIGURE * 0.4, height: FIGURE * 0.7, background: accent }}
-        title={title}
-        aria-hidden
-      />
-    );
-  }
-  return (
-    <div
-      className="anim-idle"
-      title={title}
-      style={{
-        width: FIGURE,
-        height: FIGURE,
-        backgroundImage: `url(${asset(`/sprites/${slug}.png`)})`,
-        backgroundSize: `${FIGURE * SHEET_COLUMNS}px auto`,
-        backgroundPosition: '0 0',
-        backgroundRepeat: 'no-repeat',
-        imageRendering: 'pixelated',
-      }}
-      aria-hidden
-    />
-  );
-}
 
 export function KindRow({
   groups,
   lang,
-  spriteSlugs,
 }: {
   groups: KindGroup[];
   lang: Lang;
-  spriteSlugs: ReadonlySet<string>;
 }) {
   const dict = getDict(lang);
   if (groups.length === 0) return null;
@@ -95,7 +60,7 @@ export function KindRow({
                 title={`${dict.kind.hint[g.kind]}。${dict.kind.viewAll(g.count, label)}`}
               >
                 <div
-                  className="pixel-panel-dark flex h-full flex-col items-center px-2 pb-3 pt-2 transition-transform duration-150 group-hover:-translate-y-1"
+                  className="flex h-full flex-col items-center rounded-xl border border-white/10 bg-[#151b27] px-2 pb-3 pt-3 transition-transform duration-150 group-hover:-translate-y-1"
                   style={{ ['--bob-delay' as string]: `${(g.kind.length % 5) * 0.31}s` }}
                 >
                   {/* 类型牌：与冠军卡的头衔牌同款，但用本区的识别色而不是金色，免得和「今日格局」抢眼 */}
@@ -106,7 +71,7 @@ export function KindRow({
                     {label}
                   </div>
 
-                  {/* 三个代表：小人并排站在一条台子上，悬停看名字 */}
+                  {/* 三个代表模型的品牌图标，悬停看名字 */}
                   <div className="relative flex h-[52px] w-full items-end justify-center gap-1">
                     <div
                       className="absolute bottom-0 h-1.5 w-[80%]"
@@ -114,15 +79,8 @@ export function KindRow({
                       aria-hidden
                     />
                     {g.representatives.map((m) => {
-                      const profile = profileFor(m.vendorId);
                       return (
-                        <Figure
-                          key={m.id}
-                          slug={m.slug}
-                          accent={readableOnDark(profile.accentColor, 0.42)}
-                          hasSprite={spriteSlugs.has(m.slug)}
-                          title={`${m.name} · ${profile.nameZh}`}
-                        />
+                        <ModelLogo key={m.id} vendorId={m.vendorId} modelName={m.name} size={40} />
                       );
                     })}
                   </div>

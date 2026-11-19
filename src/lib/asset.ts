@@ -18,5 +18,10 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 /** 给以 `/` 开头的公共资源路径加上部署前缀 */
 export function asset(path: string): string {
+  // Packed Toy pages inject a base element for their versioned deployment root.
+  // Keep browser-generated URLs relative so search and logos use that same root.
+  if (BASE.startsWith('/toy/') && typeof document !== 'undefined' && document.querySelector('base[href]')) {
+    return path.replace(/^\/+/, '');
+  }
   return BASE ? `${BASE}${path}` : path;
 }

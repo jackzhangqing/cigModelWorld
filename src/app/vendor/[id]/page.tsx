@@ -5,7 +5,6 @@ import { SiteHeader } from "@/components/world/SiteHeader";
 import { Character } from "@/components/character/Character";
 import { VendorCrest } from "@/components/character/VendorCrest";
 import { loadSnapshot } from "@/lib/snapshot";
-import { listSpriteSlugs, spriteOverlaysBaked } from "@/lib/sprites-available";
 import { profileFor } from "@/data/vendor-registry";
 import { buildScales, rankByEci, visualOf } from "@/lib/derive";
 import { DEFAULT_LANG, getDict } from "@/lib/i18n";
@@ -88,7 +87,6 @@ export default async function VendorPage({
   const now = new Date(snapshot.generatedAt);
   const scales = buildScales(snapshot.models);
   const ranks = rankByEci(snapshot.models);
-  const spriteSlugs = listSpriteSlugs();
 
   const family = snapshot.models.filter((m) => m.vendorId === vendor.id);
   const months = groupByMonth(family);
@@ -230,7 +228,6 @@ export default async function VendorPage({
                         const kindLabel = kind ? dict.kind.label[kind] : dict.kind.unknown;
                         return (
                           <Character
-                            overlaysNeeded={!spriteOverlaysBaked()}
                             key={m.id}
                             visual={visualOf(
                               m,
@@ -239,7 +236,6 @@ export default async function VendorPage({
                               scales,
                             )}
                             lang={lang}
-                            hasSprite={spriteSlugs.has(m.slug)}
                             badge={subLabel(m, kindLabel)}
                             badgeTitle={`${formatDate(m.releaseDate, m.releaseDatePrecision, lang)}${kind ? ` · ${dict.kind.hint[kind]}` : ""}`}
                           />

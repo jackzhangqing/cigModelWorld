@@ -22,7 +22,7 @@ export default function ComparePage() {
       <div className="relative">
         <SiteHeader current="compare" lang={lang} />
         <div className="page-shell pb-16 pt-2">
-          <CompareView dataUrl={asset('/compare-data.json')} spriteBase={asset('/sprites/')} />
+          <CompareView dataUrl={asset('/compare-data.json')} logoBase={asset('/model-logos/')} />
         </div>
       </div>
     </main>

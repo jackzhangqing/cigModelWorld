@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/world/SiteHeader';
 import { DEFAULT_LANG, getDict } from '@/lib/i18n';
 import { outbound } from '@/lib/outbound';
 
-export const metadata = { title: '素材署名' };
+export const metadata = { title: '来源与致谢' };
 
 /**
  * 素材署名页。
@@ -13,18 +13,6 @@ export const metadata = { title: '素材署名' };
  * 这张表与 `scripts/sprites/chibi/designs.ts` 里 `basis` 为 community / official 的条目一一对应，
  * 改那边的时候同步改这里。
  */
-
-const CHARACTER_SOURCES: { who: string; basis: string; href?: string }[] = [
-  {
-    who: 'GPT 酱、GPT Image 娘、Claude 娘、Gemini 娘',
-    basis: 'linux.do 社区「AI娘们的互动小剧场」系列里的形象',
-    href: 'https://linux.do/t/topic/2052255',
-  },
-  { who: 'DeepSeek 鲸鱼娘', basis: '社区二创形象「DeepSeek娘」', href: 'https://zh.moegirl.org.cn/DeepSeek%E5%A8%98' },
-  { who: '智谱 Z 狐娘', basis: '社区流传的 Z.ai 黑狐娘形象' },
-  { who: 'Grok 娘', basis: 'xAI 在 Grok 里推出的官方二次元形象' },
-  { who: '豆包', basis: '字节跳动豆包的官方 3D 形象' },
-];
 
 const LMARENA_DATASET = 'https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset';
 
@@ -41,30 +29,18 @@ export default function CreditsPage() {
         <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-4 sm:px-8">
           <h1 className="pixel-outline mb-2 mt-4 text-2xl sm:text-3xl">{dict.footer.credits}</h1>
           <section className="pixel-panel-dark mb-6 p-4">
-            <h2 className="mb-2 font-pixel text-[14px] text-[var(--color-gold)]">角色形象</h2>
-            <p className="mb-2 text-[13px] leading-relaxed text-[var(--color-parchment)]">
-              全部角色都是本站手绘的原创像素画。没有公认娘化形象的厂商，按它的标志与品牌色设计；
-              发饰上的标志是像素化的改写，只用于辨认，商标归各自所有者。下面这些形象借用了已有的设定：
+            <h2 className="mb-2 text-base font-semibold text-[var(--color-gold)]">模型图标与开源项目</h2>
+            <p className="mb-2 text-sm leading-7 text-[var(--color-parchment)]">
+              本站使用真实模型品牌或厂商标识，不使用人物、娘化角色或仿制商标。
+              图标由 Lobe Icons 的开源矢量资源整理，优先显示模型品牌，没有独立模型图标时使用厂商标识。
+              无可核实图标的模型显示名称缩写。图标用于识别，品牌权利归各自所有者；
+              不将当前品牌图标当作每个历史版本发布当日图标的档案。
             </p>
-            <ul className="space-y-1 text-[13px] leading-relaxed text-[var(--color-parchment)]">
-              {CHARACTER_SOURCES.map((c) => (
-                <li key={c.who}>
-                  {c.who}：
-                  {outbound(c.href) ? (
-                    <a
-                      href={c.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline decoration-dotted underline-offset-2 hover:text-[var(--color-gold)]"
-                    >
-                      {c.basis}
-                    </a>
-                  ) : (
-                    c.basis
-                  )}
-                </li>
-              ))}
-            </ul>
+            <p className="text-sm leading-7 text-[var(--color-parchment)]">
+              图标来源：<a href="https://github.com/lobehub/lobe-icons" target="_blank" rel="noreferrer" className="underline">Lobe Icons</a> (MIT)。
+              逐文件来源和版本记录随项目保存在 public/model-logos/。
+              本站基于 <a href="https://github.com/liyupi/ai-model-world" target="_blank" rel="noreferrer" className="underline">liyupi/ai-model-world</a> (MIT) 修改。
+            </p>
           </section>
 
           <section className="pixel-panel-dark mb-6 p-4">

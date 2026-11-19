@@ -1,30 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadSnapshot } from "@/lib/snapshot";
-import { listSpriteSlugs, spriteOverlaysBaked } from "@/lib/sprites-available";
 import { profileFor } from "@/data/vendor-registry";
 import { VendorCrest } from "@/components/character/VendorCrest";
 import { Character } from "@/components/character/Character";
-import {
-  Blackboard,
-  Bookshelf,
-  Calendar,
-  Computer,
-  Fridge,
-  Gate,
-} from "@/components/room/Furniture";
 import { GroundBackdrop } from "@/components/world/Ground";
 import { SiteHeader } from "@/components/world/SiteHeader";
 import { DEFAULT_LANG, getDict } from "@/lib/i18n";
 import {
-  bookshelfOf,
   buildScales,
   isSingleSource,
   rankByEci,
-  shelfDustOf,
   visualOf,
 } from "@/lib/derive";
-import { SWE_LEAGUE } from "@/components/character/ModelRoom";
 import { AbilityBars } from "@/components/character/AbilityBars";
 import { CodingLedger } from "@/components/character/CodingLedger";
 import { ReviewLinks } from "@/components/character/ReviewLinks";
@@ -56,7 +44,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/model/[slug]">) {
   const { slug } = await params;
   const model = loadSnapshot().models.find((m) => m.slug === slug);
-  if (!model) return { title: "未知居民" };
+  if (!model) return { title: "未知模型" };
   const profile = profileFor(model.vendorId);
   return {
     title: model.name,
@@ -91,29 +79,6 @@ function Row({
   );
 }
 
-/** 一件家具加它的说明。家具本身是图，说明才是可被搜索引擎和读屏软件读到的内容。 */
-function Piece({
-  children,
-  label,
-  value,
-}: {
-  children: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <figure className="flex w-32 flex-col items-center gap-2 text-center">
-      <div className="flex h-28 items-end justify-center">{children}</div>
-      <figcaption>
-        <div className="text-[12px] text-[var(--color-parchment)]">{label}</div>
-        <div className="text-[12px] leading-tight text-[var(--color-ghost)]">
-          {value}
-        </div>
-      </figcaption>
-    </figure>
-  );
-}
-
 export default async function ModelRoomPage({
   params,
 }: PageProps<"/model/[slug]">) {
@@ -138,11 +103,6 @@ export default async function ModelRoomPage({
   const profile = profileFor(model.vendorId);
   const vendor = snapshot.vendors.find((v) => v.id === model.vendorId);
 
-  const shelf = bookshelfOf(model);
-  const dust = shelfDustOf(model);
-  const computer = scales.computer.computerOf(model);
-  const league = computer.league ? SWE_LEAGUE[computer.league] : null;
-
   const aptitude = buildAptitudeScale(snapshot.models).rowOf(model);
   const persona = personaFor(
     model,
@@ -155,28 +115,6 @@ export default async function ModelRoomPage({
   const videoLibrary = loadVideoLibrary();
   const video = videosFor(videoLibrary, model.id, model.name);
 
-  // 黑板的公式密度取数学与科学两项成绩的均值，两项都没有就是一块空黑板
-  const mathScores = [
-    model.benchmarks.aime,
-    model.benchmarks.gpqa_diamond,
-  ].filter((v): v is number => v != null);
-  const density =
-    mathScores.length > 0
-      ? mathScores.reduce((a, b) => a + b, 0) / mathScores.length / 100
-      : 0;
-
-  const computerLabel: Record<string, string> = {
-    none: "盖着布的桌子",
-    crt: "老式显像管",
-    laptop: "一台笔记本",
-    dual: "双屏工作站",
-    battlestation: "多屏黑客洞",
-  };
-
-  const computerNote = league
-    ? `${computer.score!.toFixed(1)}% · ${league.name}`
-    : "没有公开的编程评测成绩";
-
   return (
     <main className="relative min-h-dvh">
       <GroundBackdrop />
@@ -184,13 +122,11 @@ export default async function ModelRoomPage({
       <SiteHeader current="plaza" lang={lang} />
 
       <div className="page-shell relative pb-8 pt-2">
-        {/* 居民名牌 */}
+        {/* 模型标识 */}
         <header className="mt-2 flex flex-wrap items-end gap-6">
           <Character
-            overlaysNeeded={!spriteOverlaysBaked()}
             visual={visual}
             lang={lang}
-            hasSprite={listSpriteSlugs().has(model.slug)}
             showLabel={false}
             linked={false}
           />
@@ -206,7 +142,7 @@ export default async function ModelRoomPage({
                   accentColor={profile.accentColor}
                   size={16}
                 />
-                {profile.nameZh}的全部模型 →
+                {profile.nameZh}的全部模型
               </Link>
               {vendor && (
                 <span
@@ -259,7 +195,7 @@ export default async function ModelRoomPage({
             <AbilityBars row={aptitude} />
             {anchor && (
               <p className="mt-2 text-[12px] text-[var(--color-ghost)]">
-                记性换算成体感：{anchor}
+                上下文参考：{anchor}
               </p>
             )}
           </div>
@@ -276,88 +212,10 @@ export default async function ModelRoomPage({
           />
         )}
 
-        {/* 房间 */}
-        <section className="mt-8">
-          <h2 className="mb-3 text-sm text-[var(--color-parchment)]">
-            她的房间
-          </h2>
-          <div className="pixel-panel-dark overflow-x-auto p-6">
-            <div
-              className="flex min-w-max items-end gap-8 border-b-4 pb-4"
-              style={{ borderColor: "var(--color-stone-dark)" }}
-            >
-              <Piece label="电脑" value={computerNote}>
-                <Computer
-                  tier={computer.tier}
-                  title={`编程能力：${computerLabel[computer.tier]}`}
-                  flicker={league?.thirdParty === true}
-                  dim={league?.thirdParty === false}
-                />
-              </Piece>
-
-              <Piece
-                label="书架"
-                value={
-                  shelf
-                    ? `${shelf} 层 · 记忆 ${formatContext(model.contextWindow, lang)}`
-                    : dict.unknown.noData
-                }
-              >
-                {shelf ? (
-                  <Bookshelf tier={shelf} dust={dust} title="上下文窗口" />
-                ) : (
-                  <div className="text-[12px] text-[var(--color-ghost)]">
-                    没有书架
-                  </div>
-                )}
-              </Piece>
-
-              <Piece
-                label="黑板"
-                value={density > 0 ? `数学与科学推理` : "一块空黑板"}
-              >
-                <Blackboard density={density} title="数学与科学推理成绩" />
-              </Piece>
-
-              <Piece
-                label="日历"
-                value={
-                  model.knowledgeCutoff
-                    ? `知识停在 ${model.knowledgeCutoff}`
-                    : "知识截止日期未公开"
-                }
-              >
-                <Calendar
-                  label={model.knowledgeCutoff ?? ""}
-                  title="知识截止日期"
-                />
-              </Piece>
-
-              {model.capabilities.promptCaching && (
-                <Piece label="冰箱" value="支持上下文缓存，能存记忆">
-                  <Fridge title="上下文缓存" />
-                </Piece>
-              )}
-
-              <Piece
-                label={model.openWeights ? "敞开的门" : "门禁"}
-                value={
-                  model.openWeights ? "开源权重，谁都能进" : "闭源，权重不公开"
-                }
-              >
-                <Gate
-                  open={model.openWeights === true}
-                  title={model.openWeights ? "开源权重" : "闭源"}
-                />
-              </Piece>
-            </div>
-          </div>
-        </section>
-
         {/* 属性面板 */}
         <section className="mt-8 grid gap-6 lg:grid-cols-2">
           <div className="pixel-panel-dark p-5">
-            <h2 className="mb-3 text-sm text-[var(--color-parchment)]">身世</h2>
+            <h2 className="mb-3 text-sm text-[var(--color-parchment)]">模型信息</h2>
             <dl>
               <Row
                 label={dict.attr.releaseDate}
@@ -422,7 +280,7 @@ export default async function ModelRoomPage({
           </div>
 
           <div className="pixel-panel-dark p-5">
-            <h2 className="mb-3 text-sm text-[var(--color-parchment)]">战绩</h2>
+            <h2 className="mb-3 text-sm text-[var(--color-parchment)]">评测成绩</h2>
             <dl>
               <Row
                 label={dict.track.eci}

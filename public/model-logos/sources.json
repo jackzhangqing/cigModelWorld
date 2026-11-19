@@ -1,0 +1,369 @@
+{
+  "source": "Lobe Icons",
+  "repository": "https://github.com/lobehub/lobe-icons",
+  "commit": "9752d967494e48d8f83f2808feb2b0207bf70997",
+  "retrievedAt": "2026-11-19",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "ai21.svg",
+      "upstreamBlobSha": "e6b8301be5e15aaa16724735cad5efe3d12866ec",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/ai21.svg"
+    },
+    {
+      "file": "aionlabs-color.svg",
+      "upstreamBlobSha": "644734ef4cef690d95b281207c93c94dde69e900",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/aionlabs-color.svg"
+    },
+    {
+      "file": "alephalpha.svg",
+      "upstreamBlobSha": "f7055245e8e20fe6745f408f5eac510b155966c8",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/alephalpha.svg"
+    },
+    {
+      "file": "alibaba-color.svg",
+      "upstreamBlobSha": "bb458d7ed019ddff05f12b4ccc99c140325f8a2c",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/alibaba-color.svg"
+    },
+    {
+      "file": "ai2-color.svg",
+      "upstreamBlobSha": "ef3b5dd3d45a6564851acee2defa9a50e4d98218",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/ai2-color.svg"
+    },
+    {
+      "file": "aws-color.svg",
+      "upstreamBlobSha": "495b475a11ec9023f8ffc3077ea995126dbb38a4",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/aws-color.svg"
+    },
+    {
+      "file": "anthropic.svg",
+      "upstreamBlobSha": "5b81844cbdc94d180845f87cc8da7697f1fadc21",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/anthropic.svg"
+    },
+    {
+      "file": "arcee-color.svg",
+      "upstreamBlobSha": "dc809fc95eabc04ac96e5018fcb0ad6bdfa043c9",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/arcee-color.svg"
+    },
+    {
+      "file": "baai.svg",
+      "upstreamBlobSha": "cd988b83c6ecd3c98ca8448f143045ce454d69ee",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/baai.svg"
+    },
+    {
+      "file": "baichuan-color.svg",
+      "upstreamBlobSha": "11b27e79135a39b777844fd81b721e7da13f0d3c",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/baichuan-color.svg"
+    },
+    {
+      "file": "baidu-color.svg",
+      "upstreamBlobSha": "ead7f89822e32eae78cf7c97c5183e2507812873",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/baidu-color.svg"
+    },
+    {
+      "file": "flux.svg",
+      "upstreamBlobSha": "12a4ba1d760a458b257abea03e1154999d917b8d",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/flux.svg"
+    },
+    {
+      "file": "bytedance-color.svg",
+      "upstreamBlobSha": "6921097dac4f8c5cc072049e8c0b217331cb53c5",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/bytedance-color.svg"
+    },
+    {
+      "file": "cohere-color.svg",
+      "upstreamBlobSha": "94bcb82cf9844e0c9b3aeffb543d23fe9bf93f04",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/cohere-color.svg"
+    },
+    {
+      "file": "deepseek-color.svg",
+      "upstreamBlobSha": "3fc2302406e22f064f3efda71d8a7bcf0fc1dd41",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/deepseek-color.svg"
+    },
+    {
+      "file": "essentialai-color.svg",
+      "upstreamBlobSha": "da821d846e68b1667f62faa737912dad0294af92",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/essentialai-color.svg"
+    },
+    {
+      "file": "fireworks-color.svg",
+      "upstreamBlobSha": "a23445cf94b43115947ba60822d396565f5b65f2",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/fireworks-color.svg"
+    },
+    {
+      "file": "google-color.svg",
+      "upstreamBlobSha": "e8e0f867bdea446a77dce127bd44383a618fa0ec",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/google-color.svg"
+    },
+    {
+      "file": "huawei-color.svg",
+      "upstreamBlobSha": "d55df4599a97e9356de878dd36fc205e73392abf",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/huawei-color.svg"
+    },
+    {
+      "file": "ibm.svg",
+      "upstreamBlobSha": "0f1bb930b00dfcc3e895ead930344deb52516b7d",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/ibm.svg"
+    },
+    {
+      "file": "inception.svg",
+      "upstreamBlobSha": "583c08157636afca3d150f310b78ffb7414cc5fc",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/inception.svg"
+    },
+    {
+      "file": "antgroup-color.svg",
+      "upstreamBlobSha": "bce21710c8dfe2989796a8c2e276292fd16048c5",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/antgroup-color.svg"
+    },
+    {
+      "file": "kwaipilot-color.svg",
+      "upstreamBlobSha": "c328cff02f2242da230a7dd7f47bfeea90d15612",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/kwaipilot-color.svg"
+    },
+    {
+      "file": "kwaikat.svg",
+      "upstreamBlobSha": "d9bf3d7c3366c721afd5d85335a6aaaf0367ad25",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/kwaikat.svg"
+    },
+    {
+      "file": "liquid.svg",
+      "upstreamBlobSha": "5e698b89cfb732a3fe9975b4238bc7b21f1f12a6",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/liquid.svg"
+    },
+    {
+      "file": "longcat-color.svg",
+      "upstreamBlobSha": "fde6c8a364df5f008fd8d1bdb3100f317fb3697a",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/longcat-color.svg"
+    },
+    {
+      "file": "meta-color.svg",
+      "upstreamBlobSha": "a8a8d94850914671505bdedd0eb36e4deaf6ff73",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/meta-color.svg"
+    },
+    {
+      "file": "microsoft-color.svg",
+      "upstreamBlobSha": "4d95a08eb0c9271b6a86b0927f51fee17a8acd40",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/microsoft-color.svg"
+    },
+    {
+      "file": "minimax-color.svg",
+      "upstreamBlobSha": "beb7adb86ec70eb994e17e95fbae1a08ef70c31d",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/minimax-color.svg"
+    },
+    {
+      "file": "mistral-color.svg",
+      "upstreamBlobSha": "8e03e244bf1035d2d4ea81e1c226a4c8c4ebd3c4",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/mistral-color.svg"
+    },
+    {
+      "file": "moonshot.svg",
+      "upstreamBlobSha": "fb56ac106c470648e6669f9d12375dbeb5647991",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/moonshot.svg"
+    },
+    {
+      "file": "morph-color.svg",
+      "upstreamBlobSha": "dbe7c4167c15469912455c1b8ba6a2bc34df3e8e",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/morph-color.svg"
+    },
+    {
+      "file": "nousresearch.svg",
+      "upstreamBlobSha": "a0537ebc27f5394c80464ec100adffad559bf339",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/nousresearch.svg"
+    },
+    {
+      "file": "nvidia-color.svg",
+      "upstreamBlobSha": "a9683c2e00dda9d92ce91ead02aab068919c22cc",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/nvidia-color.svg"
+    },
+    {
+      "file": "openai.svg",
+      "upstreamBlobSha": "78caf4fa20ffb0ae8ebefd74408871c11c1c7fd2",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/openai.svg"
+    },
+    {
+      "file": "perceptron.svg",
+      "upstreamBlobSha": "c1aef5760c8268c7decfb16545466404e211abe8",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/perceptron.svg"
+    },
+    {
+      "file": "perplexity-color.svg",
+      "upstreamBlobSha": "5f5a5ab5c1011b896455dab1876c2ee98318e69b",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/perplexity-color.svg"
+    },
+    {
+      "file": "poolside-color.svg",
+      "upstreamBlobSha": "7969f594be4a18ea01a143de4806b8efae37fc40",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/poolside-color.svg"
+    },
+    {
+      "file": "reflection-color.svg",
+      "upstreamBlobSha": "cb7c475f87efeeab015decb49f7e83638cca00c5",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/reflection-color.svg"
+    },
+    {
+      "file": "reka.svg",
+      "upstreamBlobSha": "a0a77a39ebd4fc694ae86da2bf7cd27e6ae77c32",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/reka.svg"
+    },
+    {
+      "file": "relace.svg",
+      "upstreamBlobSha": "f15af113c9b62f2c19d11cd77e1026552d098153",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/relace.svg"
+    },
+    {
+      "file": "sakana-color.svg",
+      "upstreamBlobSha": "9a8d12406100dc00bd9877cb5fdeb6e3c6e3acd2",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/sakana-color.svg"
+    },
+    {
+      "file": "stepfun-color.svg",
+      "upstreamBlobSha": "920e8a607a09ea8d9e2b10efcefb5fbaf923d388",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/stepfun-color.svg"
+    },
+    {
+      "file": "tencent-color.svg",
+      "upstreamBlobSha": "98da272a2653a7f83efff57a63eee03fe25783a5",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/tencent-color.svg"
+    },
+    {
+      "file": "typesafeai.svg",
+      "upstreamBlobSha": "6a6140b61a295d2e947f1bf9cc1de7d2f00be292",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/typesafeai.svg"
+    },
+    {
+      "file": "upstage-color.svg",
+      "upstreamBlobSha": "5b4762e85a151c9db72a6de4a976a45a18f7d5db",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/upstage-color.svg"
+    },
+    {
+      "file": "xai.svg",
+      "upstreamBlobSha": "536e713902f68124e76a7f15e31455c5eb69247a",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/xai.svg"
+    },
+    {
+      "file": "xiaomimimo.svg",
+      "upstreamBlobSha": "b8ba03b8719ea16c8062ac5df7980bac1aa4b40c",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/xiaomimimo.svg"
+    },
+    {
+      "file": "zhipu-color.svg",
+      "upstreamBlobSha": "0c6e61cea8afc110c0bfcb63894b584a9e1e4df1",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/zhipu-color.svg"
+    },
+    {
+      "file": "zai.svg",
+      "upstreamBlobSha": "04ba2d985f254f9f0fb05c2090f64d73264aebe9",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/zai.svg"
+    },
+    {
+      "file": "claude-color.svg",
+      "upstreamBlobSha": "62dc0db12dafd49c6232d9275c671237dea6a10a",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/claude-color.svg"
+    },
+    {
+      "file": "gemini-color.svg",
+      "upstreamBlobSha": "62681dfa7cf3db2940b527ed3cbcee7bacbb1b9b",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/gemini-color.svg"
+    },
+    {
+      "file": "gemma-color.svg",
+      "upstreamBlobSha": "92c3a52372c8d26e6d2125d81dbd572d679d128b",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/gemma-color.svg"
+    },
+    {
+      "file": "qwen-color.svg",
+      "upstreamBlobSha": "93d3311ac9caa6ab8d1887921922e0883daeec1c",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/qwen-color.svg"
+    },
+    {
+      "file": "kimi-color.svg",
+      "upstreamBlobSha": "01cd62f2b3bdc74c5175ddbfbddff922109f988e",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/kimi-color.svg"
+    },
+    {
+      "file": "doubao-color.svg",
+      "upstreamBlobSha": "e2511454cfd1fb336b9421123f30cbb8fb401eb3",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/doubao-color.svg"
+    },
+    {
+      "file": "grok.svg",
+      "upstreamBlobSha": "efb1a6183cbd9d1b68471805dc6c663e2a6fd7ff",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/grok.svg"
+    },
+    {
+      "file": "wenxin-color.svg",
+      "upstreamBlobSha": "d4a877920be5c8be973e94ffd1c3987b27f991d4",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/wenxin-color.svg"
+    },
+    {
+      "file": "chatglm-color.svg",
+      "upstreamBlobSha": "b03d601815f8d130df56e13727aa208a5e7a6eaf",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/chatglm-color.svg"
+    },
+    {
+      "file": "cogview-color.svg",
+      "upstreamBlobSha": "06e4e6549f1fc608ca88a70e998b7aa8a0dc4be9",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/cogview-color.svg"
+    },
+    {
+      "file": "cogvideo-color.svg",
+      "upstreamBlobSha": "b2e87de7ae63027761aa5821f116acc2d6e1ff1c",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/cogvideo-color.svg"
+    },
+    {
+      "file": "codex-color.svg",
+      "upstreamBlobSha": "c77ccfdd9073d71cfbc3521dd7f31efb2455d916",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/codex-color.svg"
+    },
+    {
+      "file": "dalle-color.svg",
+      "upstreamBlobSha": "2d2214d87e2387d98419e2914229e7ee802caf60",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/dalle-color.svg"
+    },
+    {
+      "file": "sora-color.svg",
+      "upstreamBlobSha": "db1e90107a7ae0e80fd37fe7a38f2593f48a8fcd",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/sora-color.svg"
+    },
+    {
+      "file": "palm-color.svg",
+      "upstreamBlobSha": "8e6af5bfe2fc231bcfaa80eabb60843febc0ffb7",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/palm-color.svg"
+    },
+    {
+      "file": "commanda-color.svg",
+      "upstreamBlobSha": "968439df446b9691d7bf5925e01edbc74846ab2a",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/commanda-color.svg"
+    },
+    {
+      "file": "nova-color.svg",
+      "upstreamBlobSha": "a2a5960d4540bfa5f71b3494d40b05fe7077f351",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/nova-color.svg"
+    },
+    {
+      "file": "hailuo-color.svg",
+      "upstreamBlobSha": "29701f3e969a89fb5c051d055e3582b9e9c5551c",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/hailuo-color.svg"
+    },
+    {
+      "file": "ling-color.svg",
+      "upstreamBlobSha": "f30a92920662a2bfc156b130c6dd5ea7830f9cd7",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/ling-color.svg"
+    },
+    {
+      "file": "bfl.svg",
+      "upstreamBlobSha": "3a1bfa99c375a9f75e5ca433b8d716f50ce52b66",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/bfl.svg"
+    },
+    {
+      "file": "hunyuan-color.svg",
+      "upstreamBlobSha": "42edd6cd94c43c3d4ca6ef2fce956a6b24455040",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/hunyuan-color.svg"
+    },
+    {
+      "file": "dolphin.svg",
+      "upstreamBlobSha": "cfaafc79e52b91f134c3e370006b1c93c96824ca",
+      "source": "https://github.com/lobehub/lobe-icons/blob/9752d967494e48d8f83f2808feb2b0207bf70997/packages/static-svg/icons/dolphin.svg"
+    }
+  ]
+}

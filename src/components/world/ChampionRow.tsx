@@ -3,59 +3,26 @@ import type { Champion } from '@/lib/champions';
 import { profileFor } from '@/data/vendor-registry';
 import { readableOnDark } from '@/lib/color';
 import { getDict, type Lang } from '@/lib/i18n';
-import { VendorCrest } from '@/components/character/VendorCrest';
 import { SectionFrame } from '@/components/world/SectionFrame';
-import { asset } from '@/lib/asset';
+import { ModelLogo } from '@/components/character/ModelLogo';
 
 /**
  * 首屏「今日格局」：一排领奖台。
  *
  * 这是整个站最先被看到的东西，所以它的任务只有一个——不用滚动、不用点击、
  * 不用读说明，三秒内回答「现在谁最强、谁最会编程、谁最便宜」。
- * 每座台上站一个角色，头顶一块头衔牌，脚下一个大数字。
+ * 每张卡片使用模型品牌图标，头顶一块头衔牌，脚下一个大数字。
  *
  * 它取代了早先那条「怎么看这些屋子」的图例：与其教用户读图，
  * 不如直接把读图的结论摆出来。
  */
 
-const SHEET_COLUMNS = 9;
-const FIGURE = 64;
-
-function Figure({ slug, accent, hasSprite }: { slug: string; accent: string; hasSprite: boolean }) {
-  if (!hasSprite) {
-    return (
-      <div
-        className="anim-idle"
-        style={{ width: FIGURE * 0.4, height: FIGURE * 0.7, background: accent }}
-        aria-hidden
-      />
-    );
-  }
-  return (
-    <div
-      className="anim-idle"
-      style={{
-        width: FIGURE,
-        height: FIGURE,
-        backgroundImage: `url(${asset(`/sprites/${slug}.png`)})`,
-        backgroundSize: `${FIGURE * SHEET_COLUMNS}px auto`,
-        backgroundPosition: '0 0',
-        backgroundRepeat: 'no-repeat',
-        imageRendering: 'pixelated',
-      }}
-      aria-hidden
-    />
-  );
-}
-
 export function ChampionRow({
   champions,
   lang,
-  spriteSlugs,
 }: {
   champions: Champion[];
   lang: Lang;
-  spriteSlugs: ReadonlySet<string>;
 }) {
   const dict = getDict(lang);
   if (champions.length === 0) return null;
@@ -98,7 +65,7 @@ export function ChampionRow({
               title={`${c.model.name} · ${c.detail}`}
             >
               <div
-                className="pixel-panel-dark flex h-full flex-col items-center px-2 pb-3 pt-2 transition-transform duration-150 group-hover:-translate-y-1"
+                className="flex h-full flex-col items-center rounded-xl border border-white/10 bg-[#151b27] px-2 pb-3 pt-3 transition-transform duration-150 group-hover:-translate-y-1"
                 style={{ ['--bob-delay' as string]: `${(c.key.length % 5) * 0.37}s` }}
               >
                 {/* 头衔牌 */}
@@ -106,18 +73,14 @@ export function ChampionRow({
                   {dict.champions[c.key]}
                 </div>
 
-                {/* 角色与领奖台 */}
+                {/* 品牌图标与评测名次 */}
                 <div className="relative flex h-[68px] w-full items-end justify-center">
                   <div
                     className="absolute bottom-0 h-1.5 w-[70%]"
                     style={{ background: accent, opacity: 0.55 }}
                     aria-hidden
                   />
-                  <Figure
-                    slug={c.model.slug}
-                    accent={accent}
-                    hasSprite={spriteSlugs.has(c.model.slug)}
-                  />
+                  <ModelLogo vendorId={c.model.vendorId} modelName={c.model.name} size={56} />
                   {c.rank != null && c.rank <= 10 && (
                     <span className="absolute right-0 top-0 font-pixel text-[13px] text-[var(--color-gold)]">
                       #{c.rank}
@@ -133,12 +96,6 @@ export function ChampionRow({
                   className="mt-0.5 flex max-w-full items-center gap-1 text-[13px] leading-tight"
                   style={{ color: accent }}
                 >
-                  <VendorCrest
-                    motif={profile.motif}
-                    accentColor={profile.accentColor}
-                    size={12}
-                    title={profile.nameZh}
-                  />
                   <span className="truncate">{profile.nameZh}</span>
                 </div>
                 <div className="mt-2 font-pixel text-[18px] leading-none text-[var(--color-gold)]">
