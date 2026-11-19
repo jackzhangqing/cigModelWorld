@@ -24,7 +24,6 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap gap-x-2"><span>{dict.footer.dataFrom}：</span>{DATA_SOURCES.map((s) => <span key={s.name}><ExtLink href={s.href}>{s.name}</ExtLink><span className="ml-1 text-xs opacity-70">({s.license})</span></span>)}</div>
         <div>图标：<ExtLink href="https://github.com/lobehub/lobe-icons">Lobe Icons</ExtLink>；品牌标识归各自权利人。字体：<ExtLink href="https://github.com/TakWolf/fusion-pixel-font">Fusion Pixel Font</ExtLink> (OFL-1.1)。</div>
-        <div>基于 <ExtLink href={SITE.upstream}>liyupi/ai-model-world</ExtLink> (MIT) 修改，保留原项目和数据来源署名。</div>
       </div>
     </footer>
   );
